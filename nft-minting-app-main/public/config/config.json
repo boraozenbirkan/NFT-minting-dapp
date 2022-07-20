@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0x97bd9a201Fc4F5ea656151a2305e2EaA9971d2ce",
+  "SCAN_LINK": "https://goerli.etherscan.io/address/0x97bd9a201fc4f5ea656151a2305e2eaa9971d2ce",
+  "NETWORK": {
+    "NAME": "ETH Goerli",
+    "SYMBOL": "ETH",
+    "ID": 5
+  },
+  "NFT_NAME": "Bora Dummy Collection",
+  "SYMBOL": "BDC",
+  "MAX_SUPPLY": 10000,
+  "WEI_COST": 10000000000000000,
+  "DISPLAY_COST": 0.01,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/bora-dummy-collection-v2",
+  "SHOW_BACKGROUND": true
+}
