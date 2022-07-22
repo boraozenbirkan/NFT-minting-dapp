@@ -4,6 +4,10 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import * as mk from "merkletreejs";
+import * as kec from "keccak256";
+
+
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -94,7 +98,7 @@ export const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-function App() {
+function App() {  
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
@@ -168,6 +172,11 @@ function App() {
       newMintAmount = 50;
     }
     setMintAmount(newMintAmount);
+
+    const leaves = addresses.map(x => keccak256(x))
+    const tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
+
+    console.log(buf2hex(tree.getRoot()))
   };
 
   const getData = () => {
@@ -194,6 +203,8 @@ function App() {
   useEffect(() => {
     getData();
   }, [blockchain.account]);
+
+  const buf2hex = x => '0x' + x.toString('hex')
 
   return (
     <s.Screen>
