@@ -188,13 +188,16 @@ function App() {
     }
     setMintAmount(newMintAmount);
 
+    console.log(addressGroup_0)
     
     // Generate proof
-    let leaves = addressGroup_0.map(x => keccak256(x))
-    let tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
+    let leaves = addressGroup_0.map(x => keccak256(x));
+    let tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
 
     let walletAddress = "\"" + blockchain.account.toString() + "\"";
     console.log(blockchain.account);
+    console.log(buf2hex(keccak256(blockchain.account)));
+
     console.log(walletAddress);
 
     let walletLeaf = buf2hex(keccak256(walletAddress));
@@ -202,7 +205,7 @@ function App() {
 
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data));
     console.log(walletProof);
-    
+
   };
 
   const getData = () => {
