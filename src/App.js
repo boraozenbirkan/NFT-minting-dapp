@@ -132,11 +132,11 @@ function App() {
   
   "0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];*/
 
-  const addressGroup_0 = ["0x64861705e52bc05d85bcdE4520794830B7da0f49","0x7cfeC81d615A6557B1F6937F25C7C6689088424f",  "0xe1EB9fdE7eA389dfea91d2693A443373c06178f4","0x57aA71222694B395020b5b1335356D95C22f1B72",  "0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
+  const addressGroup_0 = ["0x64861705e52bc05d85bcdE4520794830B7da0f49","0x7cfeC81d615A6557B1F6937F25C7C6689088424f"];
 
-  const addressGroup_1 = ["0xe1EB9fdE7eA389dfea91d2693A443373c06178f4","0x57aA71222694B395020b5b1335356D95C22f1B72"];
+  const addressGroup_1 = ["0xe1EB9fdE7eA389dfea91d2693A443373c06178f4","0x85be25d0Ef53959dB27D42df1f7da57549154D5f","0x57aA71222694B395020b5b1335356D95C22f1B72"];
 
-  const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
+  const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -151,12 +151,11 @@ function App() {
 
 
     blockchain.smartContract.methods
-      .mint(mintAmount)
+      .setCost(mintAmount)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
-        value: totalCostWei,
       })
       .once("error", (err) => {
         console.log(err);
