@@ -139,7 +139,7 @@ function App() {
   const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
   function test1() {
-    let wall1 = blockchain.account;
+    let wall1 = blockchain.account.toString();
     console.log(wall1);
 
 
