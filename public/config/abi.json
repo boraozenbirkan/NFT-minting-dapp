@@ -13,17 +13,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "_cost",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
 				"name": "_maxSupply",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_maxMintAmountPerTx",
 				"type": "uint256"
 			},
 			{
@@ -227,19 +217,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "cost",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -297,12 +274,12 @@
 	},
 	{
 		"inputs": [],
-		"name": "maxMintAmountPerTx",
+		"name": "isPublicMintOpen",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "bool",
 				"name": "",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -322,8 +299,14 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "merkleRoot",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "merkleRoots",
 		"outputs": [
 			{
 				"internalType": "bytes32",
@@ -332,19 +315,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_mintAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "mint",
-		"outputs": [],
-		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -373,6 +343,44 @@
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "numberOfAllowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "numberOfMints",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -412,15 +420,9 @@
 	},
 	{
 		"inputs": [],
-		"name": "paused",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
+		"name": "publicMint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -515,19 +517,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_cost",
-				"type": "uint256"
-			}
-		],
-		"name": "setCost",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "string",
 				"name": "_hiddenMetadataUri",
 				"type": "string"
@@ -541,25 +530,17 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_maxMintAmountPerTx",
-				"type": "uint256"
-			}
-		],
-		"name": "setMaxMintAmountPerTx",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "bytes32",
 				"name": "_merkleRoot",
 				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_rootIndex",
+				"type": "uint256"
 			}
 		],
-		"name": "setMerkleRoot",
+		"name": "setMerkleRootArray",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -572,7 +553,7 @@
 				"type": "bool"
 			}
 		],
-		"name": "setPaused",
+		"name": "setPublicMint",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -777,25 +758,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "whitelistClaimed",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "uint256",
 				"name": "_mintAmount",
 				"type": "uint256"
@@ -807,8 +769,14 @@
 			}
 		],
 		"name": "whitelistMint",
-		"outputs": [],
-		"stateMutability": "payable",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
