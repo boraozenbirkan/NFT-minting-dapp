@@ -140,25 +140,27 @@ function App() {
 
   function gibMeYorWallet()
   {
-      return blockchain.account;
+      return String(blockchain.account);
   }
 
   function test1() {
     let wall1 = String(blockchain.account);
     console.log(wall1);
 
+    let wall2 = wall1 + "";
+
 
     // Detect the address group and assign
     let addressGroup;
-    if(addressGroup_0.includes(blockchain.account)){
+    if(addressGroup_0.includes(wall2)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (addressGroup_1.includes(blockchain.account)){
+    else if (addressGroup_1.includes(wall2)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (addressGroup_2.includes(blockchain.account)){
+    else if (addressGroup_2.includes(wall2)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
