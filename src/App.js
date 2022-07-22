@@ -140,10 +140,8 @@ function App() {
 
 
   function generateProof() {
-    //let wall1 = "\"" + blockchain.account + "\"";
-    //console.log(wall1);
-
-    let wall1 = '0x2686C521A0B30131d7D9cC3764cEe56C0bB38953'
+    let wall1 = "\'" + blockchain.account + "\'";
+    console.log(wall1);
 
 
     // Detect the address group and assign
