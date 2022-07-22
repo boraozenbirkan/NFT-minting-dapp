@@ -138,9 +138,9 @@ function App() {
 
   const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
-  function arrayContains(value, array)
+  function gibMeYorWallet()
   {
-      return (array.indexOf(value) > -1);
+      return blockchain.account;
   }
 
   function test1() {
@@ -150,15 +150,15 @@ function App() {
 
     // Detect the address group and assign
     let addressGroup;
-    if(arrayContains(wall1, addressGroup_0)){
+    if(addressGroup_0.includes(blockchain.account)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (arrayContains(wall1, addressGroup_1)){
+    else if (addressGroup_1.includes(blockchain.account)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (arrayContains(wall1, addressGroup_2)){
+    else if (addressGroup_2.includes(blockchain.account)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
@@ -166,7 +166,7 @@ function App() {
   }
 
   function generateProof() {
-    let wall1 = "\"" + blockchain.account + "\"";
+    let wall1 = JSON.stringify(blockchain.account);
     //console.log(wall1);
 
     //let wall1 = "0x85be25d0Ef53959dB27D42df1f7da57549154D5f"
@@ -174,15 +174,15 @@ function App() {
 
     // Detect the address group and assign
     let addressGroup;
-    if(arrayContains(wall1, addressGroup_0)){
+    if(addressGroup_0.includes(gibMeYorWallet())){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (arrayContains(wall1, addressGroup_1)){
+    else if (addressGroup_1.includes(gibMeYorWallet())){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (arrayContains(wall1, addressGroup_2)){
+    else if (addressGroup_2.includes(gibMeYorWallet())){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
