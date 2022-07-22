@@ -142,29 +142,28 @@ function App() {
     let wall1 = blockchain.account;
     console.log(wall1);
 
-    wall1 += "";
+    let wall2 = wall1.toString('hex');
 
 
     // Detect the address group and assign
     let addressGroup;
-    if(addressGroup_0.includes(wall1)){
+    if(addressGroup_0.includes(wall2)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (addressGroup_1.includes(wall1)){
+    else if (addressGroup_1.includes(wall2)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (addressGroup_2.includes(wall1)){
+    else if (addressGroup_2.includes(wall2)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
-
     console.log("Address group: " + addressGroup);
   }
 
   function generateProof() {
-    let wall1 = blockchain.account + "";
+    let wall1 = "\"" + blockchain.account + "\"";
     //console.log(wall1);
 
     //let wall1 = "0x85be25d0Ef53959dB27D42df1f7da57549154D5f"
