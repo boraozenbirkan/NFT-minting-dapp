@@ -141,17 +141,21 @@ function App() {
 
   function generateProof() {
     let wall1 = "\"" + blockchain.account + "\"";
+    console.log(wall1);
 
     // Detect the address group and assign
     let addressGroup;
     if(addressGroup_0.includes(wall1)){
       addressGroup = addressGroup_0;
+      console.log("Group 0 detected!");
     }
     else if (addressGroup_1.includes(wall1)){
       addressGroup = addressGroup_1;
+      console.log("Group 1 detected!");
     }
     else if (addressGroup_2.includes(wall1)){
       addressGroup = addressGroup_2;
+      console.log("Group 2 detected!");
     }
 
     console.log("Address group: " + addressGroup);
