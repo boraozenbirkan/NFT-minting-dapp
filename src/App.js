@@ -200,13 +200,13 @@ function App() {
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data));
     console.log(walletProof);
 
-    stringProof = "[";
-    for (let i = 0; i < proof.length; i++){    
-      if ((i+1) == proof.length){
-        stringProof += proof[i] + "\]";
+    let stringProof = "[";
+    for (let i = 0; i < walletProof.length; i++){    
+      if ((i+1) == walletProof.length){
+        stringProof += walletProof[i] + "\]";
       }
       else {
-        stringProof += proof[i] + ",";
+        stringProof += walletProof[i] + ",";
       }
     }
     
