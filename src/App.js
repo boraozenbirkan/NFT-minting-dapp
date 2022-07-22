@@ -193,7 +193,10 @@ function App() {
     let leaves = addressGroup_0.map(x => keccak256(x))
     let tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
 
-    let walletLeaf = buf2hex(keccak256(blockchain.account))
+    let walletAddress = "\"" + blockchain.account.toString() + "\"";
+    console.log(blockchain.account)
+    console.log(walletAddress);
+    let walletLeaf = buf2hex(keccak256(walletAddress))
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data))
 
     console.log(walletLeaf);
