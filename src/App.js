@@ -163,6 +163,7 @@ function App() {
     console.log("Address group: " + addressGroup);
 
     if (addressGroup == undefined){
+      console.log("The wallet you have connected is not on the whitelist!")
       setFeedback("Sorry, it seems you are not in the whitelist. Please wait for public mint!");
       setClaimingNft(false);
       return false;
@@ -177,18 +178,7 @@ function App() {
     console.log("Wallet Leaf: " + walletLeaf);
 
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data));
-    console.log("Raw Proof: " + walletProof);
-
-    let stringProof = "[";
-    for (let i = 0; i < walletProof.length; i++){    
-      if ((i+1) == walletProof.length){
-        stringProof += walletProof[i] + "\]";
-      }
-      else {
-        stringProof += walletProof[i] + ",";
-      }
-    }
-    console.log("String Proof: " + stringProof);
+    console.log("Proof: " + walletProof);
 
     return walletProof;
   }
@@ -236,6 +226,7 @@ function App() {
     }
     setMintAmount(newMintAmount);
 
+    console.log("Debug Info:");
     let debugLog = generateProof();
   };
 
