@@ -141,43 +141,21 @@ function App() {
 
   const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
-  function test1() {
-    let wall1 = ethers.utils.getAddress(blockchain.account);
-    console.log(wall1);
-
-    // Detect the address group and assign
-    let addressGroup;
-    if(addressGroup_0.includes(wall1)){
-      addressGroup = addressGroup_0;
-      console.log("Group 0 detected!");
-    }
-    else if (addressGroup_1.includes(wall1)){
-      addressGroup = addressGroup_1;
-      console.log("Group 1 detected!");
-    }
-    else if (addressGroup_2.includes(wall1)){
-      addressGroup = addressGroup_2;
-      console.log("Group 2 detected!");
-    }
-    console.log("Address group: " + addressGroup);
-  }
-
-
   function generateProof() {
-    let wall1 = web3.utils.toChecksumAddress(blockchain.account);
-    console.log(wall1);
+    let walletAddress = ethers.utils.getAddress(blockchain.account);
+    console.log("Wallet Address: " + walletAddress);
 
     // Detect the address group and assign
     let addressGroup;
-    if(addressGroup_0.includes(wall1)){
+    if(addressGroup_0.includes(walletAddress)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (addressGroup_1.includes(wall1)){
+    else if (addressGroup_1.includes(walletAddress)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (addressGroup_2.includes(wall1)){
+    else if (addressGroup_2.includes(walletAddress)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
@@ -187,13 +165,13 @@ function App() {
     let leaves = addressGroup.map(x => keccak256(x));
     let tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
 
-    console.log(buf2hex(tree.getRoot()))
+    console.log("Root: " + buf2hex(tree.getRoot()))
 
     let walletLeaf = buf2hex(keccak256(blockchain.account));
     console.log(walletLeaf);
 
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data));
-    console.log(walletProof);
+    console.log("Raw Proof: " + walletProof);
 
     let stringProof = "[";
     for (let i = 0; i < walletProof.length; i++){    
@@ -204,7 +182,7 @@ function App() {
         stringProof += walletProof[i] + ",";
       }
     }
-    console.log(stringProof);
+    console.log("String Proof: " + stringProof);
 
     return stringProof;
   }
@@ -220,10 +198,10 @@ function App() {
     setClaimingNft(true);
 
     // Generate proof
-    
+    let proof = generateProof();
 
     blockchain.smartContract.methods
-      .setCost(mintAmount)
+      .whitelistMint(mintAmount, proof)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
