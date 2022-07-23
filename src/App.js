@@ -162,13 +162,19 @@ function App() {
 
     console.log("Address group: " + addressGroup);
 
+    if (addressGroup == undefined){
+      setFeedback("Sorry, it seems you are not in the whitelist. Please wait for public mint!");
+      setClaimingNft(false);
+      return false;
+    }
+
     let leaves = addressGroup.map(x => keccak256(x));
     let tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
 
     console.log("Root: " + buf2hex(tree.getRoot()))
 
     let walletLeaf = buf2hex(keccak256(blockchain.account));
-    console.log(walletLeaf);
+    console.log("Wallet Leaf: " + walletLeaf);
 
     let walletProof = tree.getProof(walletLeaf).map(x => buf2hex(x.data));
     console.log("Raw Proof: " + walletProof);
@@ -199,6 +205,7 @@ function App() {
 
     // Generate proof
     let proof = generateProof();
+    if (proof == false) { return; }
 
     blockchain.smartContract.methods
       .whitelistMint(mintAmount, proof)
@@ -229,7 +236,7 @@ function App() {
     }
     setMintAmount(newMintAmount);
 
-    test1();
+    let debugLog = generateProof();
   };
 
   const incrementMintAmount = () => {
@@ -238,9 +245,6 @@ function App() {
       newMintAmount = 50;
     }
     setMintAmount(newMintAmount);
-    
-    // Generate proof
-    let test = generateProof();
   };
 
   const getData = () => {
