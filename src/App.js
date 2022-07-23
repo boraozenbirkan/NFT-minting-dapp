@@ -6,6 +6,9 @@ import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import * as mk from "merkletreejs";
 import * as kec from "keccak256";
+import { ethers } from "ethers";
+import { web3 } from "web3";
+//import * as web3 from "web3";
 
 
 
@@ -138,119 +141,48 @@ function App() {
 
   const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
-  function gibMeYorWallet()
-  {
-      return String(blockchain.account);
-  }
-
-  function isItInHere(value, array){
-    for (let i = 0; i < array.length; i++){
-      if (array[i] == value){
-        return true;
-      }
-    }
-    return false;
-  }
-
   function test1() {
-    let wall1 = String(blockchain.account);
+    let wall1 = ethers.utils.getAddress(blockchain.account);
     console.log(wall1);
 
-    let wall2 = wall1 + "";
-
-
     // Detect the address group and assign
     let addressGroup;
-    if(addressGroup_0.includes(wall2)){
+    if(addressGroup_0.includes(wall1)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (addressGroup_1.includes(wall2)){
+    else if (addressGroup_1.includes(wall1)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (addressGroup_2.includes(wall2)){
+    else if (addressGroup_2.includes(wall1)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
     console.log("Address group: " + addressGroup);
-
-    // Detect the address group and assign
-    let addressGroup1;
-    if(isItInHere(blockchain.account, addressGroup_0)){
-      addressGroup1 = addressGroup_0;
-      console.log("Group1 0 detected!");
-    }
-    else if (isItInHere(blockchain.account, addressGroup_1)){
-      addressGroup1 = addressGroup_1;
-      console.log("Group1 1 detected!");
-    }
-    else if (isItInHere(blockchain.account, addressGroup_2)){
-      addressGroup1 = addressGroup_2;
-      console.log("Group1 2 detected!");
-    }
-    console.log("Address group: " + addressGroup1);
   }
 
-  function generateProof() {
-    //let wall1 = JSON.stringify(blockchain.account);
-    //console.log(wall1);
 
-    //let wall1 = "0x85be25d0Ef53959dB27D42df1f7da57549154D5f"
-    //console.log(wall1);
+  function generateProof() {
+    let wall1 = web3.utils.toChecksumAddress(blockchain.account);
+    console.log(wall1);
 
     // Detect the address group and assign
     let addressGroup;
-    if(addressGroup_0.includes(gibMeYorWallet())){
+    if(addressGroup_0.includes(wall1)){
       addressGroup = addressGroup_0;
       console.log("Group 0 detected!");
     }
-    else if (addressGroup_1.includes(gibMeYorWallet())){
+    else if (addressGroup_1.includes(wall1)){
       addressGroup = addressGroup_1;
       console.log("Group 1 detected!");
     }
-    else if (addressGroup_2.includes(gibMeYorWallet())){
+    else if (addressGroup_2.includes(wall1)){
       addressGroup = addressGroup_2;
       console.log("Group 2 detected!");
     }
 
     console.log("Address group: " + addressGroup);
-
-
-
-    let addressGroup1;
-    if(addressGroup_0.includes(gibMeYorWallet())){
-      addressGroup1 = addressGroup_0;
-      console.log("Group1 0 detected!");
-    }
-    else if (addressGroup_1.includes(gibMeYorWallet())){
-      addressGroup1 = addressGroup_1;
-      console.log("Group1 1 detected!");
-    }
-    else if (addressGroup_2.includes(gibMeYorWallet())){
-      addressGroup1 = addressGroup_2;
-      console.log("Group1 2 detected!");
-    }
-
-    console.log("Address group1: " + addressGroup1);
-
-
-    let addressGroup2;
-    if(addressGroup_0.includes('${blockchain.account}')){
-      addressGroup2 = addressGroup_0;
-      console.log("Group2 0 detected!");
-    }
-    else if (addressGroup_1.includes('${blockchain.account}')){
-      addressGroup2 = addressGroup_1;
-      console.log("Group2 1 detected!");
-    }
-    else if (addressGroup_2.includes('${blockchain.account}')){
-      addressGroup2 = addressGroup_2;
-      console.log("Group2 2 detected!");
-    }
-
-    console.log("Address group: " + addressGroup2);
-
 
     let leaves = addressGroup.map(x => keccak256(x));
     let tree = new MerkleTree(leaves, keccak256, { sortPairs: true });
