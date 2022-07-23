@@ -190,7 +190,7 @@ function App() {
     }
     console.log("String Proof: " + stringProof);
 
-    return stringProof;
+    return walletProof;
   }
 
   const claimNFTs = () => {
