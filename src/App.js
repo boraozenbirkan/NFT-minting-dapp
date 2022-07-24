@@ -135,14 +135,16 @@ function App() {
   
   "0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];*/
 
-  const addressGroup_0 = ["0x64861705e52bc05d85bcdE4520794830B7da0f49","0x7cfeC81d615A6557B1F6937F25C7C6689088424f"];
+  const addressGroup_0 = ['0x64861705e52bc05d85bcdE4520794830B7da0f49', '0x7cfeC81d615A6557B1F6937F25C7C6689088424f'];
 
-  const addressGroup_1 = ["0xe1EB9fdE7eA389dfea91d2693A443373c06178f4","0x85be25d0Ef53959dB27D42df1f7da57549154D5f","0x57aA71222694B395020b5b1335356D95C22f1B72"];
+  const addressGroup_1 = ['0xe1eb9fde7ea389dfea91d2693a443373c06178f4', '0x85be25d0ef53959db27d42df1f7da57549154d5f', '0x57aa71222694b395020b5b1335356d95c22f1b72'];
 
-  const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95Ef28c0d1c01279AffA193Cd4670b621BE06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
+  const addressGroup_2 = ['0xa96aafee3ad157837c527eb55d11555f5ddd37f5', '0x95ef28c0d1c01279affa193cd4670b621be06c75', '0x2686c521a0b30131d7d9cc3764cee56c0bb38953'];
+
+  const addressGroup_3 = ['0x0000000000000000000000000000000000000000', '0x857a3371a2b89a437fd88b4a66fd5d0e884b20b4'];
 
   function generateProof() {
-    let walletAddress = ethers.utils.getAddress(blockchain.account);
+    let walletAddress = ethers.utils.getAddress(blockchain.account).toLowerCase();
     console.log("Wallet Address: " + walletAddress);
 
     // Detect the address group and assign
@@ -157,6 +159,10 @@ function App() {
     }
     else if (addressGroup_2.includes(walletAddress)){
       addressGroup = addressGroup_2;
+      console.log("Group 2 detected!");
+    }
+    else if (addressGroup_3.includes(walletAddress)){
+      addressGroup = addressGroup_3;
       console.log("Group 2 detected!");
     }
 
