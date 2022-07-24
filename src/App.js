@@ -135,7 +135,7 @@ function App() {
   
   "0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];*/
 
-  const addressGroup_0 = ['0x64861705e52bc05d85bcdE4520794830B7da0f49', '0x7cfeC81d615A6557B1F6937F25C7C6689088424f'];
+  const addressGroup_0 = ['0x64861705e52bc05d85bcdE4520794830B7da0f49', "0x7cfeC81d615A6557B1F6937F25C7C6689088424f"];
 
   const addressGroup_1 = ['0xe1eb9fde7ea389dfea91d2693a443373c06178f4', '0x85be25d0ef53959db27d42df1f7da57549154d5f', '0x57aa71222694b395020b5b1335356d95c22f1b72'];
 
@@ -146,6 +146,11 @@ function App() {
   function generateProof() {
     let walletAddress = ethers.utils.getAddress(blockchain.account).toLowerCase();
     console.log("Wallet Address: " + walletAddress);
+
+    console.log(addressGroup_0);
+    console.log(addressGroup_1);
+    console.log(addressGroup_2);
+    console.log(addressGroup_3);
 
     // Detect the address group and assign
     let addressGroup;
