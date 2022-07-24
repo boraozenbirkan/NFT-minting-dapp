@@ -139,7 +139,7 @@ function App() {
 
   const addressGroup_1 = ["0xe1EB9fdE7eA389dfea91d2693A443373c06178f4","0x85be25d0Ef53959dB27D42df1f7da57549154D5f","0x57aA71222694B395020b5b1335356D95C22f1B72"];
 
-  const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95ef28c0d1c01279affa193cd4670b621be06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
+  const addressGroup_2 = ["0xa96AAFee3AD157837c527eb55D11555F5Ddd37f5","0x95Ef28c0d1c01279AffA193Cd4670b621BE06c75","0x2686C521A0B30131d7D9cC3764cEe56C0bB38953"];
 
   function generateProof() {
     let walletAddress = ethers.utils.getAddress(blockchain.account);
