@@ -228,7 +228,7 @@ function App() {
 
   const publicMint = () => {
     let cost;
-    if (data.totalSupply > 20){
+    if (data.totalSupply >= 20){
       cost = CONFIG.WEI_COST;
     }
     else{
@@ -397,7 +397,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {(data.totalSupply > 20) ? CONFIG.DISPLAY_COST : 0}{" "}
+                  1 {CONFIG.SYMBOL} costs {(data.totalSupply >= 20) ? CONFIG.DISPLAY_COST : 0}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
