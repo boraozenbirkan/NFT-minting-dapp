@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x6e1fe738A90054FcCa170Af189DD663db692e527",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x6e1fe738A90054FcCa170Af189DD663db692e527",
+  "CONTRACT_ADDRESS": "0xb2714AA4c1ed52b2A642d1F39E6FF3471939A9f3",
+  "SCAN_LINK": "https://goerli.etherscan.io/address/0xb2714AA4c1ed52b2A642d1F39E6FF3471939A9f3",
   "NETWORK": {
-    "NAME": "ETH Rinkeby",
+    "NAME": "ETH Goerli",
     "SYMBOL": "ETH",
-    "ID": 4
+    "ID": 5
   },
-  "NFT_NAME": "Bora Dummy Collection",
-  "SYMBOL": "BDC",
-  "MAX_SUPPLY": 10000,
+  "NFT_NAME": "CC0PY",
+  "SYMBOL": "CC0PY",
+  "MAX_SUPPLY": 666,
   "WEI_COST": 0,
   "DISPLAY_COST": 0,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/bora-dummy-collection-v2",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io",
   "SHOW_BACKGROUND": true
 }
