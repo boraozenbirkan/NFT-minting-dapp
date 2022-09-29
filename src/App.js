@@ -491,7 +491,7 @@ function App() {
                         {claimingNft ? "Busy" : "WL Mint"}
                       </StyledButton>
                     </s.Container>
-                    <s.Container style={{ marginTop: "5vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
