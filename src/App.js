@@ -227,7 +227,14 @@ function App() {
   };
 
   const publicMint = () => {
-    let cost = CONFIG.WEI_COST;
+    let cost;
+    if (data.totalSupply > 20){
+      cost = CONFIG.WEI_COST;
+    }
+    else{
+      cost = 0;
+    }
+    
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -390,7 +397,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 {CONFIG.SYMBOL} costs {(data.totalSupply > 20) ? CONFIG.DISPLAY_COST : 0}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
