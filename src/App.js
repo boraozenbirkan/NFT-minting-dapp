@@ -106,7 +106,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT. You can only mint 1 NFT for public address regardless your mint amount input!`);
+  const [feedback, setFeedback] = useState(`You can only mint 1 NFT for PUBLIC MINT per address regardless your mint amount input!`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
