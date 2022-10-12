@@ -2702,7 +2702,7 @@
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-6.1.0.tgz#4fc33a00c1d0c16987b1a20cf92d20614c55ac35"
 
-"@types/http-cache-semantics@*":
+"@types/http-cache-semantics@*", "@types/http-cache-semantics@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
 
@@ -3822,6 +3822,22 @@ bytes@3.1.2:
 cacheable-lookup@^6.0.4:
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/cacheable-lookup/-/cacheable-lookup-6.0.4.tgz#65c0e51721bb7f9f2cb513aed6da4a1b93ad7dc8"
+
+cacheable-lookup@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/cacheable-lookup/-/cacheable-lookup-7.0.0.tgz#3476a8215d046e5a3202a9209dd13fec1f933a27"
+
+cacheable-request@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/cacheable-request/-/cacheable-request-10.2.1.tgz#cbc7480bf057fb7bd5bc7520f7e5a43d9c865626"
+  dependencies:
+    "@types/http-cache-semantics" "^4.0.1"
+    get-stream "^6.0.1"
+    http-cache-semantics "^4.1.0"
+    keyv "^4.5.0"
+    mimic-response "^4.0.0"
+    normalize-url "^7.1.0"
+    responselike "^3.0.0"
 
 cacheable-request@^7.0.2:
   version "7.0.2"
@@ -5632,9 +5648,9 @@ form-data-encoder@1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/form-data-encoder/-/form-data-encoder-1.7.1.tgz#ac80660e4f87ee0d3d3c3638b7da8278ddb8ec96"
 
-form-data-encoder@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/form-data-encoder/-/form-data-encoder-2.1.0.tgz#ee9afc735186a2c897005431c13b624cede616da"
+form-data-encoder@^2.1.2:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/form-data-encoder/-/form-data-encoder-2.1.3.tgz#682cd821a8423605093992ff895e6b2ed5a9d429"
 
 form-data@^3.0.0:
   version "3.0.1"
@@ -5866,17 +5882,16 @@ got@12.1.0:
     p-cancelable "^3.0.0"
     responselike "^2.0.0"
 
-got@^12.4.1:
-  version "12.4.1"
-  resolved "https://registry.yarnpkg.com/got/-/got-12.4.1.tgz#8598311b42591dfd2ed3ca4cdb9a591e2769a0bd"
+got@^12.5.2:
+  version "12.5.2"
+  resolved "https://registry.yarnpkg.com/got/-/got-12.5.2.tgz#2c1b390918961cf50e61cb02d2085ba203d0df45"
   dependencies:
     "@sindresorhus/is" "^5.2.0"
     "@szmarczak/http-timer" "^5.0.1"
-    "@types/cacheable-request" "^6.0.2"
-    cacheable-lookup "^6.0.4"
-    cacheable-request "^7.0.2"
+    cacheable-lookup "^7.0.0"
+    cacheable-request "^10.2.1"
     decompress-response "^6.0.0"
-    form-data-encoder "^2.1.0"
+    form-data-encoder "^2.1.2"
     get-stream "^6.0.1"
     http2-wrapper "^2.1.10"
     lowercase-keys "^3.0.0"
@@ -6078,7 +6093,7 @@ htmlparser2@^6.1.0:
     domutils "^2.5.2"
     entities "^2.0.0"
 
-http-cache-semantics@^4.0.0:
+http-cache-semantics@^4.0.0, http-cache-semantics@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.1.0.tgz"
 
@@ -7170,6 +7185,12 @@ keyv@^4.0.0:
     compress-brotli "^1.3.8"
     json-buffer "3.0.1"
 
+keyv@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.5.0.tgz#dbce9ade79610b6e641a9a65f2f6499ba06b9bc6"
+  dependencies:
+    json-buffer "3.0.1"
+
 kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
@@ -7445,6 +7466,10 @@ mimic-response@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
 
+mimic-response@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-4.0.0.tgz#35468b19e7c75d10f5165ea25e75a5ceea7cf70f"
+
 min-document@^2.19.0:
   version "2.19.0"
   resolved "https://registry.npmjs.org/min-document/-/min-document-2.19.0.tgz"
@@ -7648,6 +7673,10 @@ normalize-range@^0.1.2:
 normalize-url@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
+
+normalize-url@^7.1.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.2.0.tgz#5317f78cff95f5fa1e76cc0b5e33245c43781e11"
 
 npm-run-path@^4.0.1:
   version "4.0.1"
