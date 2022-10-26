@@ -101,10 +101,7 @@ export const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large">
-Tweet</a>
+
 
 function App() {  
   const dispatch = useDispatch();
@@ -501,6 +498,12 @@ function App() {
                       >
                         {claimingNft ? "Busy" : "Public Mint"}
                       </StyledButton>
+                    </s.Container>
+                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                    <a class="twitter-share-button"
+                      href="https://twitter.com/intent/tweet?text=Hello%20world"
+                      data-size="large">
+                    Tweet</a>
                     </s.Container>
                   </>
                 )}
