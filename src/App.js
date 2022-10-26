@@ -500,10 +500,17 @@ function App() {
                       </StyledButton>
                     </s.Container>
                     <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                    <a class="twitter-share-button"
-                      href="https://twitter.com/intent/tweet?text=Hello%20world"
-                      data-size="large">
-                    Tweet</a>
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          <a class="twitter-share-button"
+                            href="https://twitter.com/intent/tweet?text=Hello%20world"
+                            data-size="large">
+                          Tweet</a>
+                        }}
+                      >
+                        {claimingNft ? "Busy" : "Public Mint"}
+                      </StyledButton>
                     </s.Container>
                   </>
                 )}
