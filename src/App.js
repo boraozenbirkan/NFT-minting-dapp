@@ -501,8 +501,11 @@ function App() {
                     </s.Container>
                     <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
                       <a class="twitter-share-button"
-                        href="https://twitter.com/intent/tweet?text=Hello%20world"
-                        data-size="large">
+                        href="https://twitter.com/intent/tweet"
+                        data-size="large"
+                        data-text="This collection is fucking awesome!! @cc0py_eth 🔥🔥🚀🚀"
+                        data-url="https://dev.twitter.com/web/tweet-button"
+                        data-hashtags="CC0PY,BuyNow">
                       Tweet</a>
                     </s.Container>
                   </>
