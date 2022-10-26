@@ -501,12 +501,15 @@ function App() {
                     </s.Container>
                     <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
                       <a class="twitter-share-button"
-                        href="https://twitter.com/intent/tweet"
-                        data-size="large"
-                        data-text="This collection is fucking awesome!! @cc0py_eth 🔥🔥🚀🚀"
-                        data-url="https://dev.twitter.com/web/tweet-button"
-                        data-hashtags="CC0PY,BuyNow">
-                      Tweet</a>
+                        href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
+                        data-size="large" 
+                        data-text="This collection is fucking awesome!! @cc0py_eth 🔥🔥🚀🚀" 
+                        data-via="cc0py_eth" data-hashtags="CC0PY,BuyNow" 
+                        data-related="test1,test2" 
+                        data-show-count="false">
+                      Tweet
+                      </a>
+                      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </s.Container>
                   </>
                 )}
