@@ -111,7 +111,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`You can only mint 1 NFT for PUBLIC MINT per address regardless your mint amount input!`);
+  const [feedback, setFeedback] = useState(`You can mint only 1 CC0PY with Public Mint! Mint with WL button if you are in the Whitelist!`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -183,10 +183,35 @@ function App() {
     return walletProof;
   }
 
+  function getAllowance() {
+    let walletAddress = ethers.utils.getAddress(blockchain.account).toLowerCase();
+    console.log("Wallet Address: " + walletAddress);
+
+    let allowance = 1;
+
+    // Detect the address group and assign
+    let addressGroup;
+    if(addressGroup_0.includes(walletAddress)){
+      allowance = 1;
+      console.log("Group 0 detected! Allowance 1");
+    }
+    else if (addressGroup_1.includes(walletAddress)){
+      allowance = 2;
+      console.log("Group 1 detected! Allowance 2");
+    }
+    else if (addressGroup_2.includes(walletAddress)){
+      allowance = 3;
+      console.log("Group 2 detected! Allowance 3");
+    }
+
+    return allowance;
+  }
+
   const claimWL = () => {
     let cost = 0;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
+    let allowance = getAllowance();
+    let totalCostWei = String(cost * allowance);
     let totalGasLimit = String(250000);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -198,7 +223,7 @@ function App() {
     if (proof == false) { return; }
 
     blockchain.smartContract.methods
-      .whitelistMint(mintAmount, proof)
+      .whitelistMint(allowance, proof)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -229,7 +254,7 @@ function App() {
     }
     
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
+    let totalCostWei = String(cost * 1);
     let totalGasLimit = String(150000);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -257,22 +282,6 @@ function App() {
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
       });
-  };
-
-  const decrementMintAmount = () => {
-    let newMintAmount = mintAmount - 1;
-    if (newMintAmount < 1) {
-      newMintAmount = 1;
-    }
-    setMintAmount(newMintAmount);
-  };
-
-  const incrementMintAmount = () => {
-    let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 3) {
-      newMintAmount = 3;
-    }
-    setMintAmount(newMintAmount);
   };
 
   const getData = () => {
@@ -445,38 +454,6 @@ function App() {
                     >
                       {feedback}
                     </s.TextDescription>
-                    <s.SpacerMedium />
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledRoundButton
-                        style={{ lineHeight: 0.4 }}
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          decrementMintAmount();
-                        }}
-                      >
-                        -
-                      </StyledRoundButton>
-                      <s.SpacerMedium />
-                      <s.TextDescription
-                        style={{
-                          textAlign: "center",
-                          color: "var(--accent-text)",
-                        }}
-                      >
-                        {mintAmount}
-                      </s.TextDescription>
-                      <s.SpacerMedium />
-                      <StyledRoundButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          incrementMintAmount();
-                        }}
-                      >
-                        +
-                      </StyledRoundButton>
-                    </s.Container>
                     <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
