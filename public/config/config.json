@@ -9,9 +9,9 @@
   "NFT_NAME": "CC0PY",
   "SYMBOL": "CC0PY",
   "MAX_SUPPLY": 666,
-  "WEI_COST": 9900000000000000,
-  "DISPLAY_COST": 0.0099,
-  "GAS_LIMIT": 285000,
+  "WEI_COST": 0,
+  "DISPLAY_COST": 0,
+  "GAS_LIMIT": 250000,
   "MARKETPLACE": "OpenSea",
   "MARKETPLACE_LINK": "https://opensea.io/collection/-cc0py0-",
   "SHOW_BACKGROUND": true

@@ -245,9 +245,8 @@ function App() {
   };
 
   const publicMint = () => {
-    let cost = 0;    
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * 1);
+    let totalCostWei = String(CONFIG.WEI_COST);
     let totalGasLimit = String(150000);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
