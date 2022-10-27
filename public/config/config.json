@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x40FE878879498F2EBB28726E1Dc72Da478d136d4",
-  "SCAN_LINK": "https://etherscan.io/address/0x40FE878879498F2EBB28726E1Dc72Da478d136d4",
+  "CONTRACT_ADDRESS": "0x02858dD1F31f8EeF3a9B15caCA2729EeC3a7DE7E",
+  "SCAN_LINK": "https://goerli.etherscan.io/address/0x02858dD1F31f8EeF3a9B15caCA2729EeC3a7DE7E",
   "NETWORK": {
-    "NAME": "ETH Mainnet",
+    "NAME": "ETH Goerli",
     "SYMBOL": "ETH",
-    "ID": 1
+    "ID": 5
   },
   "NFT_NAME": "CC0PY",
   "SYMBOL": "CC0PY",
@@ -12,7 +12,7 @@
   "WEI_COST": 9900000000000000,
   "DISPLAY_COST": 0.0099,
   "GAS_LIMIT": 285000,
-  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE": "OpenSea",
   "MARKETPLACE_LINK": "https://opensea.io",
   "SHOW_BACKGROUND": true
 }

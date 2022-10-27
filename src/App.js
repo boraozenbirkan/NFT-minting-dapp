@@ -138,6 +138,8 @@ function App() {
   // Group 2: 8 addresses - 3 mints
   const addressGroup_2 = ['0xf8ba38a1054b7f86f2aad2b810943b300a1de4ba','0x8a1a99a63c4f4fac2b48b1061d19275ddf86f3f8','0x8fbfd3fabd443334b6f413b5931477d4debeafa9','0xf46253da839974633078bbc2cd71744a5b6b8b63','0x3e5d93811684fb7d3d26a93bc36aad003b0de745','0xa6c6b7327b30dda256d3485f8e1610b63c7690bd','0x1bc6f80da87bdab3c94d7b1b7a513fe4fc2254f5','0x95ef28c0d1c01279affa193cd4670b621be06c75'];
 
+  var minted = false;
+
   function generateProof() {
     let walletAddress = ethers.utils.getAddress(blockchain.account).toLowerCase();
     console.log("Wallet Address: " + walletAddress);
@@ -213,6 +215,7 @@ function App() {
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
+        minted = true;
       });
   };
 
@@ -253,6 +256,7 @@ function App() {
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
+        minted = true;
       });
   };
 
@@ -417,13 +421,7 @@ function App() {
                       }}
                     >
                       CONNECT
-                    </StyledButton>                    
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <a class="twitter-share-button"
-                        href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
-                        Tweet
-                      </a>
-                    </s.Container>
+                    </StyledButton> 
                     {blockchain.errorMsg !== "" ? (
                       <>
                         <s.SpacerSmall />
@@ -505,12 +503,14 @@ function App() {
                         {claimingNft ? "Busy" : "Public Mint"}
                       </StyledButton>
                     </s.Container>
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <a class="twitter-share-button"
-                        href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
-                        Tweet
-                      </a>
-                    </s.Container>
+                    if (minted) {
+                      <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                        <a class="twitter-share-button"
+                          href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
+                          Tweet
+                        </a>
+                      </s.Container>
+                    }
                   </>
                 )}
               </>
