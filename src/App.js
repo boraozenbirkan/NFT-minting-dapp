@@ -345,19 +345,6 @@ const Overlay = styled.div`
 
   return (
     <s.Screen>
-      <>
-        <VideoContainer>
-          <Video
-            background={true}
-            height={1080}
-            loop={true}
-            responsive
-            video="760684350" // 529949088
-            width={1920}
-          />
-        </VideoContainer>
-        <Overlay />         
-      </>
       <s.Container
         flex={1}
         ai={"center"}
@@ -607,7 +594,20 @@ const Overlay = styled.div`
             gas limit.
           </s.TextDescription>
         </s.Container>
-      </s.Container>
+      </s.Container>     
+      <>
+        <VideoContainer>
+          <Video
+            background={true}
+            height={1080}
+            loop={true}
+            responsive
+            video="760684350" // 529949088
+            width={1920}
+          />
+        </VideoContainer>
+        <Overlay />         
+      </>
     </s.Screen> 
   );
 }
