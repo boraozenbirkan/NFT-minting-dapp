@@ -180,10 +180,35 @@ function App() {
     return walletProof;
   }
 
+  function getAllowance() {
+    let walletAddress = ethers.utils.getAddress(blockchain.account).toLowerCase();
+    console.log("Wallet Address: " + walletAddress);
+
+    let allowance = 1;
+
+    // Detect the address group and assign
+    let addressGroup;
+    if(addressGroup_0.includes(walletAddress)){
+      allowance = 1;
+      console.log("Group 0 detected! Allowance 1");
+    }
+    else if (addressGroup_1.includes(walletAddress)){
+      allowance = 2;
+      console.log("Group 1 detected! Allowance 2");
+    }
+    else if (addressGroup_2.includes(walletAddress)){
+      allowance = 3;
+      console.log("Group 2 detected! Allowance 3");
+    }
+
+    return allowance;
+  }
+
   const claimWL = () => {
     let cost = 0;
+    let allowance = getAllowance();
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
+    let totalCostWei = String(cost * allowance);
     let totalGasLimit = String(250000);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
@@ -195,7 +220,7 @@ function App() {
     if (proof == false) { return; }
 
     blockchain.smartContract.methods
-      .whitelistMint(mintAmount, proof)
+      .whitelistMint(allowance, proof)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -492,8 +517,7 @@ function App() {
                       >
                         {claimingNft ? "Busy" : "WL Mint"}
                       </StyledButton>
-                    </s.Container>
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                      <s.SpacerMedium />
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
