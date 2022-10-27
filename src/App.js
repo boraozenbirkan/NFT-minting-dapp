@@ -111,7 +111,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`You can mint only 1 CC0PY with Public Mint! Mint with WL button if you are in the Whitelist!`);
+  const [feedback, setFeedback] = useState(`You can mint only 1 CC0PY with Public Mint! If you are in the Whitelist, you can mint with WL button.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -466,8 +466,7 @@ function App() {
                       >
                         {claimingNft ? "Busy" : "WL Mint"}
                       </StyledButton>
-                    </s.Container>
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                      <s.SpacerMedium />
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
