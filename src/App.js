@@ -497,13 +497,15 @@ function App() {
                       >
                         {claimingNft ? "Busy" : "Public Mint"}
                       </StyledButton>
-                    </s.Container>
-                    <s.Container disabled={minted ? 1 : 0} style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <a class="twitter-share-button"
-                        href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
-                        Tweet
-                      </a>
-                    </s.Container>
+                    </s.Container>                    
+                    <div style={minted ? {pointerEvents: "none", opacity: "0.4"} : {}}>
+                      <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                        <a class="twitter-share-button"
+                          href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
+                          Tweet
+                        </a>
+                      </s.Container>
+                    </div>
                   </>
                 )}
               </>
