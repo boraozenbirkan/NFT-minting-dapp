@@ -8,6 +8,7 @@ import * as mk from "merkletreejs";
 import * as kec from "keccak256";
 import { ethers } from "ethers";
 import { web3 } from "web3";
+import Vimeo from "@u-wave/react-vimeo"
 //import * as web3 from "web3";
 
 
