@@ -260,6 +260,7 @@ function App() {
       newMintAmount = 1;
     }
     setMintAmount(newMintAmount);
+    minted = !minted;
   };
 
   const incrementMintAmount = () => {
