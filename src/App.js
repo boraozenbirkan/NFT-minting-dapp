@@ -9,6 +9,7 @@ import * as kec from "keccak256";
 import { ethers } from "ethers";
 import { web3 } from "web3";
 import Vimeo from "@u-wave/react-vimeo"
+import videoBG from "../public/config/images/video-example.mp4"
 //import * as web3 from "web3";
 
 
@@ -344,6 +345,8 @@ const Overlay = styled.div`
 `
 
   return (
+    <div className='main'>
+      <video src={videoBG} />
     <s.Screen>
       <s.Container
         flex={1}
@@ -595,20 +598,8 @@ const Overlay = styled.div`
           </s.TextDescription>
         </s.Container>
       </s.Container>     
-      <>
-        <VideoContainer>
-          <Video
-            background={true}
-            height={1080}
-            loop={true}
-            responsive
-            video="760684350" // 529949088
-            width={1920}
-          />
-        </VideoContainer>
-        <Overlay />         
-      </>
     </s.Screen> 
+    </div>
   );
 }
 
