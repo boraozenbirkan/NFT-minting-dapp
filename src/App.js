@@ -245,14 +245,7 @@ function App() {
   };
 
   const publicMint = () => {
-    let cost;
-    if (data.totalSupply >= 200){
-      cost = CONFIG.WEI_COST;
-    }
-    else{
-      cost = 0;
-    }
-    
+    let cost = 0;    
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * 1);
     let totalGasLimit = String(150000);
