@@ -299,259 +299,315 @@ function App() {
 
   const buf2hex = x => '0x' + x.toString('hex');
 
+  const VideoContainer = styled.div`
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+`
+
+const Video = styled(props => <Vimeo {...props} />)`
+  height: 56.25vw; // for a 16:9 aspect ratio, 9/16*100 = 56.25
+  left: 50%;
+  min-height: 100vh;
+  min-width: 177.77vh; // for a 16:9 aspect ratio, 16/9*100 = 177.77
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+`
+
+{/*
+For a nice vintage and darkening effect
+*/}
+
+const Overlay = styled.div`
+  background-color: rgba(0, 0, 0, 0.66);
+  bottom: 0;
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+`
+
   return (
-    <s.Screen>
-      <s.Container
-        flex={1}
-        ai={"center"}
-        style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/video-example.mp4" : null}
-      >
-        <a href={CONFIG.MARKETPLACE_LINK}>
-          <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
-        </a>
-        <s.SpacerSmall />
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
-          <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
-          </s.Container>
-          <s.SpacerLarge />
-          <s.Container
-            flex={2}
-            jc={"center"}
-            ai={"center"}
-            style={{
-              backgroundColor: "var(--accent)",
-              padding: 24,
-              borderRadius: 24,
-              border: "4px dashed var(--secondary)",
-              boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
-            }}
-          >
-            <s.TextTitle
+    <>
+      <VideoContainer>
+        <Video
+          background={true}
+          height={1080}
+          loop={true}
+          responsive
+          video="760684350" // 529949088
+          width={1920}
+        />
+      </VideoContainer>
+      <Overlay />
+      <s.Screen>
+        <s.Container
+          flex={1}
+          ai={"center"}
+          style={{ padding: 24, backgroundColor: "var(--primary)" }}
+          image={CONFIG.SHOW_BACKGROUND ? "/config/images/video-example.mp4" : null}
+        >
+          <a href={CONFIG.MARKETPLACE_LINK}>
+            <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+          </a>
+          <s.SpacerSmall />
+          <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
+            <s.Container flex={1} jc={"center"} ai={"center"}>
+              <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            </s.Container>
+            <s.SpacerLarge />
+            <s.Container
+              flex={2}
+              jc={"center"}
+              ai={"center"}
               style={{
-                textAlign: "center",
-                fontSize: 50,
-                fontWeight: "bold",
-                color: "var(--accent-text)",
+                backgroundColor: "var(--accent)",
+                padding: 24,
+                borderRadius: 24,
+                border: "4px dashed var(--secondary)",
+                boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
               }}
             >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-            </s.TextTitle>
-            <s.TextDescription
-              style={{
-                textAlign: "center",
-                color: "var(--primary-text)",
-              }}
-            >
-              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
-                {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
-              </StyledLink>
-            </s.TextDescription>
-            <span
-              style={{
-                textAlign: "center",
-              }}
-            >
-              <StyledButton
+              <s.TextTitle
                 style={{
-                  margin: "5px",
-                }}
-                onClick={(e) => {
-                  window.open(CONFIG.MARKETPLACE_LINK, "_blank");
+                  textAlign: "center",
+                  fontSize: 50,
+                  fontWeight: "bold",
+                  color: "var(--accent-text)",
                 }}
               >
-                {CONFIG.MARKETPLACE}
-              </StyledButton>
-            </span>
-            <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
-              <>
-                <s.TextTitle
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  The sale has ended.
-                </s.TextTitle>
-                <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  You can still find {CONFIG.NFT_NAME} on
-                </s.TextDescription>
-                <s.SpacerSmall />
-                <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
-                  {CONFIG.MARKETPLACE}
+                {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+              </s.TextTitle>
+              <s.TextDescription
+                style={{
+                  textAlign: "center",
+                  color: "var(--primary-text)",
+                }}
+              >
+                <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+                  {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
                 </StyledLink>
-              </>
-            ) : (
-              <>
-                <s.TextTitle
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+              </s.TextDescription>
+              <span
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                <StyledButton
+                  style={{
+                    margin: "5px",
+                  }}
+                  onClick={(e) => {
+                    window.open(CONFIG.MARKETPLACE_LINK, "_blank");
+                  }}
                 >
-                  1 {CONFIG.SYMBOL} costs {(data.totalSupply >= 200) ? CONFIG.DISPLAY_COST : 0}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
-                </s.TextTitle>
-                <s.SpacerXSmall />
-                <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-                  Excluding gas fees.
-                </s.TextDescription>
-                <s.SpacerSmall />
-                {blockchain.account === "" ||
-                blockchain.smartContract === null ? (
-                  <s.Container ai={"center"} jc={"center"}>
-                    <s.TextDescription
-                      style={{
-                        textAlign: "center",
-                        color: "var(--accent-text)",
-                      }}
-                    >
-                      Connect to the {CONFIG.NETWORK.NAME} network
-                    </s.TextDescription>
-                    <s.SpacerSmall />
-                    <StyledButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        dispatch(connect());
-                        getData();
-                      }}
-                    >
-                      CONNECT
-                    </StyledButton>                    
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <a class="twitter-share-button"
-                        href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
-                        Tweet
-                      </a>
-                    </s.Container>
-                    {blockchain.errorMsg !== "" ? (
-                      <>
-                        <s.SpacerSmall />
-                        <s.TextDescription
-                          style={{
-                            textAlign: "center",
-                            color: "var(--accent-text)",
-                          }}
-                        >
-                          {blockchain.errorMsg}
-                        </s.TextDescription>
-                      </>
-                    ) : null}
-                  </s.Container>
-                ) : (
-                  <>
-                    <s.TextDescription
-                      style={{
-                        textAlign: "center",
-                        color: "var(--accent-text)",
-                      }}
-                    >
-                      {feedback}
-                    </s.TextDescription>
-                    <s.SpacerMedium />
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledRoundButton
-                        style={{ lineHeight: 0.4 }}
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          decrementMintAmount();
-                        }}
-                      >
-                        -
-                      </StyledRoundButton>
-                      <s.SpacerMedium />
+                  {CONFIG.MARKETPLACE}
+                </StyledButton>
+              </span>
+              <s.SpacerSmall />
+              {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+                <>
+                  <s.TextTitle
+                    style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  >
+                    The sale has ended.
+                  </s.TextTitle>
+                  <s.TextDescription
+                    style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  >
+                    You can still find {CONFIG.NFT_NAME} on
+                  </s.TextDescription>
+                  <s.SpacerSmall />
+                  <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
+                    {CONFIG.MARKETPLACE}
+                  </StyledLink>
+                </>
+              ) : (
+                <>
+                  <s.TextTitle
+                    style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  >
+                    1 {CONFIG.SYMBOL} costs {(data.totalSupply >= 200) ? CONFIG.DISPLAY_COST : 0}{" "}
+                    {CONFIG.NETWORK.SYMBOL}.
+                  </s.TextTitle>
+                  <s.SpacerXSmall />
+                  <s.TextDescription
+                    style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  >
+                    Excluding gas fees.
+                  </s.TextDescription>
+                  <s.SpacerSmall />
+                  {blockchain.account === "" ||
+                  blockchain.smartContract === null ? (
+                    <s.Container ai={"center"} jc={"center"}>
                       <s.TextDescription
                         style={{
                           textAlign: "center",
                           color: "var(--accent-text)",
                         }}
                       >
-                        {mintAmount}
+                        Connect to the {CONFIG.NETWORK.NAME} network
+                      </s.TextDescription>
+                      <s.SpacerSmall />
+                      <StyledButton
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(connect());
+                          getData();
+                        }}
+                      >
+                        CONNECT
+                      </StyledButton>                    
+                      <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                        <a class="twitter-share-button"
+                          href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
+                          Tweet
+                        </a>
+                      </s.Container>
+                      {blockchain.errorMsg !== "" ? (
+                        <>
+                          <s.SpacerSmall />
+                          <s.TextDescription
+                            style={{
+                              textAlign: "center",
+                              color: "var(--accent-text)",
+                            }}
+                          >
+                            {blockchain.errorMsg}
+                          </s.TextDescription>
+                        </>
+                      ) : null}
+                    </s.Container>
+                  ) : (
+                    <>
+                      <s.TextDescription
+                        style={{
+                          textAlign: "center",
+                          color: "var(--accent-text)",
+                        }}
+                      >
+                        {feedback}
                       </s.TextDescription>
                       <s.SpacerMedium />
-                      <StyledRoundButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          incrementMintAmount();
-                        }}
-                      >
-                        +
-                      </StyledRoundButton>
-                    </s.Container>
-                    <s.SpacerSmall />
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          claimWL();
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "Busy" : "WL Mint"}
-                      </StyledButton>
-                    </s.Container>
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          publicMint();
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "Busy" : "Public Mint"}
-                      </StyledButton>
-                    </s.Container>
-                    <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-                      <a class="twitter-share-button"
-                        href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
-                        Tweet
-                      </a>
-                    </s.Container>
-                  </>
-                )}
-              </>
-            )}
-            <s.SpacerMedium />
+                      <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                        <StyledRoundButton
+                          style={{ lineHeight: 0.4 }}
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            decrementMintAmount();
+                          }}
+                        >
+                          -
+                        </StyledRoundButton>
+                        <s.SpacerMedium />
+                        <s.TextDescription
+                          style={{
+                            textAlign: "center",
+                            color: "var(--accent-text)",
+                          }}
+                        >
+                          {mintAmount}
+                        </s.TextDescription>
+                        <s.SpacerMedium />
+                        <StyledRoundButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            incrementMintAmount();
+                          }}
+                        >
+                          +
+                        </StyledRoundButton>
+                      </s.Container>
+                      <s.SpacerSmall />
+                      <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                        <StyledButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            claimWL();
+                            getData();
+                          }}
+                        >
+                          {claimingNft ? "Busy" : "WL Mint"}
+                        </StyledButton>
+                      </s.Container>
+                      <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                        <StyledButton
+                          disabled={claimingNft ? 1 : 0}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            publicMint();
+                            getData();
+                          }}
+                        >
+                          {claimingNft ? "Busy" : "Public Mint"}
+                        </StyledButton>
+                      </s.Container>
+                      <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
+                        <a class="twitter-share-button"
+                          href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
+                          Tweet
+                        </a>
+                      </s.Container>
+                    </>
+                  )}
+                </>
+              )}
+              <s.SpacerMedium />
+            </s.Container>
+            <s.SpacerLarge />
+            <s.Container flex={1} jc={"center"} ai={"center"}>
+              <StyledImg
+                alt={"example"}
+                src={"/config/images/example.gif"}
+                style={{ transform: "scaleX(-1)" }}
+              />
+            </s.Container>
+          </ResponsiveWrapper>
+          <s.SpacerMedium />
+          <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
+            <s.TextDescription
+              style={{
+                textAlign: "center",
+                color: "var(--primary-text)",
+              }}
+            >
+              Please make sure you are connected to the right network (
+              {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
+              Once you make the purchase, you cannot undo this action.
+            </s.TextDescription>
+            <s.SpacerSmall />
+            <s.TextDescription
+              style={{
+                textAlign: "center",
+                color: "var(--primary-text)",
+              }}
+            >
+              We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
+              successfully mint your NFT. We recommend that you don't lower the
+              gas limit.
+            </s.TextDescription>
           </s.Container>
-          <s.SpacerLarge />
-          <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg
-              alt={"example"}
-              src={"/config/images/example.gif"}
-              style={{ transform: "scaleX(-1)" }}
-            />
-          </s.Container>
-        </ResponsiveWrapper>
-        <s.SpacerMedium />
-        <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
-          <s.TextDescription
-            style={{
-              textAlign: "center",
-              color: "var(--primary-text)",
-            }}
-          >
-            Please make sure you are connected to the right network (
-            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
-            Once you make the purchase, you cannot undo this action.
-          </s.TextDescription>
-          <s.SpacerSmall />
-          <s.TextDescription
-            style={{
-              textAlign: "center",
-              color: "var(--primary-text)",
-            }}
-          >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
-          </s.TextDescription>
         </s.Container>
-      </s.Container>
-    </s.Screen>
+      </s.Screen>    
+    </>
   );
 }
 
