@@ -354,9 +354,13 @@ function App() {
             }}
           >
             <s.SpacerSmall />
-            <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
-              Text here !!!
-            </s.Container>
+            <s.TextMain
+            style={{
+              textAlign: "center",
+              color: "var(--primary-text)",
+            }}>
+            TEXT HERE
+            </s.TextMain>
             <s.Container style={{ marginTop: "2vh" }} ai={"center"} jc={"center"} fd={"row"}>
               <a class="twitter-share-button"
                 href= "https://twitter.com/intent/tweet?text=This%20collection%20is%20fucking%20awesome!!%20@cc0py_eth%20🔥🔥🚀🚀%20%23CC0PY%20%23FUKC">
