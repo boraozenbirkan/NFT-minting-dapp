@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x3aeeda10a0e00388dbced63c8730f439a3d3725e",
-  "SCAN_LINK": "https://goerli.etherscan.io/address/0x3aeeda10a0e00388dbced63c8730f439a3d3725e",
+  "CONTRACT_ADDRESS": "0x40FE878879498F2EBB28726E1Dc72Da478d136d4",
+  "SCAN_LINK": "https://etherscan.io/address/0x40FE878879498F2EBB28726E1Dc72Da478d136d4",
   "NETWORK": {
-    "NAME": "ETHGoerli",
+    "NAME": "ETH Mainnet",
     "SYMBOL": "ETH",
-    "ID": 5
+    "ID": 1
   },
   "NFT_NAME": "CC0PY",
   "SYMBOL": "CC0PY",

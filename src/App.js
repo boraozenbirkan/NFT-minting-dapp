@@ -242,7 +242,14 @@ function App() {
   };
 
   const publicMint = () => {
-    let cost = 0    
+    let cost;
+    if (data.totalSupply >= 200){
+      cost = CONFIG.WEI_COST;
+    }
+    else{
+      cost = 0;
+    }
+    
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(150000);
@@ -252,7 +259,7 @@ function App() {
     setClaimingNft(true);
 
     blockchain.smartContract.methods
-      .releaseTotal()
+      .publicMint(1)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
